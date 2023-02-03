@@ -26,24 +26,21 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (canMove)
-        {
-            Movement();
-        }
+        Movement();
     }
-
-   
     #endregion
+
 
     void SetUp()
     {
         canMove = true;
     }
-   
+
     void InputHandling()
     {
         inputSpeed = Vector2.up * Input.GetAxisRaw("Vertical") + Vector2.right * Input.GetAxisRaw("Horizontal");
-        if(inputSpeed.x !=0 || inputSpeed.y != 0)
+        //This is so that the player looks at the last direction it moved to. 
+        if (inputSpeed.x !=0 || inputSpeed.y != 0)
         {
             lastInputSpeed = inputSpeed;
         }
@@ -51,10 +48,13 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        rbody.velocity = inputSpeed.normalized*speed;
+        if (canMove)
+        {
+            rbody.velocity = inputSpeed.normalized * speed;
+        }
     }
 
-   public void AnimationHandling()
+    public void AnimationHandling()
     {
         anmtr.SetFloat("SpeedX",inputSpeed.x);
         anmtr.SetFloat("SpeedY", inputSpeed.y);
