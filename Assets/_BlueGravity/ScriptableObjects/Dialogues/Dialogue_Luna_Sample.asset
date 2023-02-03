@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a561eefc1503a44eb89db75fc7d91c8, type: 3}
   m_Name: Dialogue_Luna_Sample
   m_EditorClassIdentifier: 
-  protrait: {fileID: 0}
-  message: 
-  sender: 
+  protrait: {fileID: 21300004, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  message: 'Hi hi! I''m Luna. I like to sing, dance, pretend and.......
+
+    I like
+    to have fun fun fun fun fun fun.'
+  sender: Luna
+  nameTagColor: {r: 0.9433962, g: 0.5740477, b: 0.9353669, a: 1}

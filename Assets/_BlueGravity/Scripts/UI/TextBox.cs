@@ -6,12 +6,19 @@ using TMPro;
 public class TextBox : MonoBehaviour
 {
     [Header("Components")]
-    public Image portrait;
-    public TextMeshPro message;
-    public TextMeshPro sender;
+    [SerializeField] Image portrait;
+    [SerializeField] TextMeshProUGUI nameTag;
+    [SerializeField] TextMeshProUGUI message;
+    [Header("Configuration")]
+    [SerializeField] float writeSpeed;
     IEnumerator ieWrite;
-    public void SendMessage(Dialogue _dialogue)
+
+    public void SetDialogue(Dialogue _dialogue)
     {
+        portrait.sprite = _dialogue.protrait;
+        nameTag.color = _dialogue.nameTagColor;
+        nameTag.text = _dialogue.sender;
+
         message.text = "";
         if(ieWrite != null)
         {
@@ -24,6 +31,10 @@ public class TextBox : MonoBehaviour
 
     IEnumerator IEWriteMessage(Dialogue _dialogue)
     {
-        yield return null;
+        for(int i =0; i<_dialogue.message.Length; i++)
+        {
+            message.text += _dialogue.message[i];
+            yield return new WaitForSeconds(writeSpeed);
+        }
     }
 }

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a561eefc1503a44eb89db75fc7d91c8, type: 3}
-  m_Name: Dialogue_Ludo_Leave
+  m_Name: Dialogue_Ludo_Welcome
   m_EditorClassIdentifier: 
-  protrait: {fileID: 0}
-  message: 
-  sender: 
+  protrait: {fileID: 21300008, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  message: Hello, I'm Ludo. Care to browse my wares?
+  sender: Ludo
+  nameTagColor: {r: 0.4229263, g: 0.7494817, b: 0.9056604, a: 1}

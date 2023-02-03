@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dialogue : ScriptableObject
 {
     public Sprite protrait;
+    [TextArea]
     public string message;
     public string sender;
     public Color nameTagColor;
