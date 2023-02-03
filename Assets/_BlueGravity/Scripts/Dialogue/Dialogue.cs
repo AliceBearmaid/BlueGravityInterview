@@ -1,0 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Blue Gravity/Dialogue", fileName = "Dialogue")]
+public class Dialogue : ScriptableObject
+{
+    public Sprite protrait;
+    public string message;
+    public string sender;
+    public Color nameTagColor;
+
+}
