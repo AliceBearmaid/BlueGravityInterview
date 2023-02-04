@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody2D rbody;
     [SerializeField] Animator anmtr;
     [Header("Movement")]
-    public bool canMove;
+    public static bool canMove;
     [SerializeField] float speed;
     [Header("Inputs")]
     [SerializeField] Vector2 inputSpeed;
     [SerializeField] Vector2 lastInputSpeed;
+    [Header("Interaction")]
+    [SerializeField] Interactable activeInteractable;
 
     #region Unity Methods
     private void Start()
@@ -44,6 +46,11 @@ public class Player : MonoBehaviour
         {
             lastInputSpeed = inputSpeed;
         }
+
+        if(Input.GetButton("Jump"))
+        {
+            Interact();
+        }
     }
 
     void Movement()
@@ -54,13 +61,45 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AnimationHandling()
+    void AnimationHandling()
     {
-        anmtr.SetFloat("SpeedX",inputSpeed.x);
-        anmtr.SetFloat("SpeedY", inputSpeed.y);
-        anmtr.SetFloat("LastMovingSpeedX", lastInputSpeed.x);
-        anmtr.SetFloat("LastMovingSpeedY", lastInputSpeed.y);
-        anmtr.SetBool("IsMoving", inputSpeed.magnitude > 0);
+        if(canMove)
+        {
+            anmtr.SetFloat("SpeedX", inputSpeed.x);
+            anmtr.SetFloat("SpeedY", inputSpeed.y);
+            anmtr.SetFloat("LastMovingSpeedX", lastInputSpeed.x);
+            anmtr.SetFloat("LastMovingSpeedY", lastInputSpeed.y);
+            anmtr.SetBool("IsMoving", inputSpeed.magnitude > 0);
+        }
     }
 
+    #region Interactions
+    public void Interact()
+    {
+        if(activeInteractable!=null&&canMove)
+        {
+            activeInteractable.Interact();
+        }
+    }
+    #endregion
+
+
+    private void OnTriggerEnter2D(Collider2D _collision)
+    {
+        if(_collision.CompareTag("Interactable"))
+        {
+            if(_collision.GetComponentInParent<Interactable>())
+            {
+                activeInteractable = _collision.GetComponentInParent<Interactable>();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D _collision)
+    {
+        if (_collision.CompareTag("Interactable"))
+        {
+            activeInteractable = null;
+        }
+    }
 }

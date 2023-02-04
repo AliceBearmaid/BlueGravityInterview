@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class TextBox : MonoBehaviour
+public class TextBox : UIElement
 {
     [Header("Components")]
     [SerializeField] Image portrait;
@@ -11,7 +11,9 @@ public class TextBox : MonoBehaviour
     [SerializeField] TextMeshProUGUI message;
     [Header("Configuration")]
     [SerializeField] float writeSpeed;
+    [SerializeField] float startDelay;
     IEnumerator ieWrite;
+   
 
     public void SetDialogue(Dialogue _dialogue)
     {
@@ -31,6 +33,7 @@ public class TextBox : MonoBehaviour
 
     IEnumerator IEWriteMessage(Dialogue _dialogue)
     {
+        yield return new WaitForSeconds(startDelay);
         for(int i =0; i<_dialogue.message.Length; i++)
         {
             message.text += _dialogue.message[i];

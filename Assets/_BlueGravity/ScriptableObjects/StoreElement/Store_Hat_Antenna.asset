@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Store_Hat_Antenna
   m_EditorClassIdentifier: 
   elementType: 0
+  price: 1
   icon: {fileID: 0}
   front_Idle: {fileID: 21300000, guid: ff8cb282609853b4c9938e8cc4277c03, type: 3}
   front_Step: {fileID: 21300000, guid: ff8cb282609853b4c9938e8cc4277c03, type: 3}
