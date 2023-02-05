@@ -47,6 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408032f1fa9a28e4fa319951b4f203df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  endEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &2463330804426229245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,7 +228,7 @@ GameObject:
   - component: {fileID: 8889906450686695554}
   m_Layer: 0
   m_Name: InteractionArea
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

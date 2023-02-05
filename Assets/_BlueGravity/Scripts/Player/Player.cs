@@ -65,6 +65,10 @@ public class Player : MonoBehaviour
         {
             Interact();
         }
+        if (Input.GetButton("Cancel"))
+        {
+            EndInteraction();
+        }
     }
 
     void Movement()
@@ -93,6 +97,13 @@ public class Player : MonoBehaviour
         if(activeInteractable!=null&&canMove)
         {
             activeInteractable.Interact();
+        }
+    }
+    public void EndInteraction()
+    {
+        if (activeInteractable != null && !canMove)
+        {
+            activeInteractable.EndInteraction();
         }
     }
     #endregion
