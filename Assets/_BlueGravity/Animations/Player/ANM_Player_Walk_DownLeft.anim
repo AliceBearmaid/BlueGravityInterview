@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ANM_Player_Walk_Down
+  m_Name: ANM_Player_Walk_DownLeft
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0

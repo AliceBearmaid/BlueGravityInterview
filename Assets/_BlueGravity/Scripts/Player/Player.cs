@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
     [Header("Components")]
     [SerializeField] Rigidbody2D rbody;
     [SerializeField] Animator anmtr;
     [Header("Movement")]
-    public static bool canMove;
+    public bool canMove;
     [SerializeField] float speed;
     [Header("Inputs")]
     [SerializeField] Vector2 inputSpeed;
     [SerializeField] Vector2 lastInputSpeed;
     [Header("Interaction")]
     [SerializeField] Interactable activeInteractable;
+    [Header("Customization")]
+    public PlayerCustomization playerCustomization;
 
     #region Unity Methods
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+        }
+    }
     private void Start()
     {
         SetUp();

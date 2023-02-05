@@ -4,9 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 public class StoreUI : UIElement
 {
-    bool isActive;
+    public static StoreUI instance;
     [Header("Components")]
     [SerializeField] StoreUICategory[] categories;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+        }
+    }
+
 
     public override void Toggle(bool _on)
     {
@@ -38,8 +51,27 @@ public class StoreUI : UIElement
             }
         }
     }
-    
+    public StoreUICategory GetCategory(PlayerCustomizationType _type)
+    {
+        for (int i = 0; i < categories.Length; i++)
+        {
+            if (categories[i].type == _type)
+            {
+                return categories[i];
+            }
+        }
+        return null;
+    }
+    public void SelectElement(PlayerCustomizationType _type, int _id)
+    {
+        StoreUICategory category = GetCategory(_type);
 
+        for (int i = 0; i < category.children.Length; i++)
+        {
+            category.children[i].GetComponent<Button>().interactable = i != _id;
+            category.children[i].GetComponent<StoreUIElement>().isActive = i == _id;
+        }
+    }
 
 }
 [System.Serializable]
@@ -48,4 +80,6 @@ public class StoreUICategory
     public PlayerCustomizationType type;
     public Button tag;
     public GameObject categoryContainer;
+    public GameObject[] children;
+
 }

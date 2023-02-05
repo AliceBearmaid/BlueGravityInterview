@@ -11,8 +11,12 @@ public class Store : Interactable
     public override void Interact()
     {
         base.Interact();
-        Player.canMove = false;
+        Player.instance.canMove = false;
     }
-
+    public override void EndInteraction()
+    {
+        base.EndInteraction();
+        Player.instance.canMove = true;
+    }
 
 }

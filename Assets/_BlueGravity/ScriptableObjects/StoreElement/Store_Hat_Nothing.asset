@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Store_Hat_Nothing
   m_EditorClassIdentifier: 
   elementType: 0
-  price: 1
+  price: 0
   icon: {fileID: 0}
   front_Idle: {fileID: 0}
   front_Step: {fileID: 0}
